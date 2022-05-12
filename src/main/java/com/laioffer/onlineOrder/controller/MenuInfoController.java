@@ -2,6 +2,8 @@ package com.laioffer.onlineOrder.controller;
 
 import com.laioffer.onlineOrder.entity.MenuItem;
 import com.laioffer.onlineOrder.entity.Restaurant;
+import com.laioffer.onlineOrder.service.MenuInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +16,20 @@ import java.util.List;
 @Controller
 public class MenuInfoController {
 
+    @Autowired
+    private MenuInfoService menuInfoService;
+
     // /restaurant/123/menu
     @RequestMapping(value = "/restaurant/{restaurantId}/menu", method = RequestMethod.GET)
     @ResponseBody
     public List<MenuItem> getMenus(@PathVariable("restaurantId") int restaurantId) {
-        return new ArrayList<>();
+        return menuInfoService.getAllMenuItem(restaurantId);
     }
 
     // /restaurants
     @RequestMapping(value = "/restaurants", method = RequestMethod.GET)
     @ResponseBody
     public List<Restaurant> getRestaurants() {
-        return new ArrayList<>();
+        return menuInfoService.getRestaurants();
     }
 }
