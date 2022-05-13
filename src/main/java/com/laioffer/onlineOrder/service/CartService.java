@@ -1,5 +1,6 @@
 package com.laioffer.onlineOrder.service;
 
+import com.laioffer.onlineOrder.dao.CartDao;
 import com.laioffer.onlineOrder.entity.Cart;
 import com.laioffer.onlineOrder.entity.Customer;
 import com.laioffer.onlineOrder.entity.OrderItem;
@@ -13,6 +14,9 @@ public class CartService {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CartDao cartDao;
 
     public Cart getCart() {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -30,5 +34,14 @@ public class CartService {
         }
 
         return new Cart();
+    }
+
+    public void cleanCart() {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        Customer customer = customerService.getCustomer(username);
+        if (customer != null) {
+            cartDao.removeAllCartItems(customer.getCart());
+        }
     }
 }
