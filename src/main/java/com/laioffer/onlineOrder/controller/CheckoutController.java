@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 // Stephan老师demo link: http://34.207.60.1:8081/
+// username: test@gmail.com
+// password: 111
 
 @Controller
 public class CheckoutController {
