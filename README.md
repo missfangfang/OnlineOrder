@@ -3,6 +3,8 @@
 
 🌎 AWS EC2 Public IP: http://ec2-54-174-252-182.compute-1.amazonaws.com/
 
+💻 Frontend: https://github.com/missfangfang/OnlineOrder-Frontend
+
 #
 
 A Spring and Hibernate based online food ordering system 🍜
